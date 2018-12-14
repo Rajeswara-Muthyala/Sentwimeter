@@ -41,7 +41,7 @@ class TwitterClient():
         else: 
             return 'negative'
 
-    def search_until(self, k, tc, st, ud):
+    def search_until(self, k, tc, st, ud, lan = 'en'):
         single_tweet = self.twitter.search(q=k, count=1, result_type="recent", until=ud)
         if len(single_tweet['statuses']) != 1:
             print "More than a single tweet for fetching since_id, exiting...", len(single_tweet['statuses'])
@@ -51,7 +51,7 @@ class TwitterClient():
         since = single_tweet['statuses'][0]['id']
 
         pp = pprint.PrettyPrinter(indent=1)
-        search_results = self.twitter.search(q=k, count=tc, result_type=st, since_id=since)
+        search_results = self.twitter.search(q=k, count=tc, result_type=st, since_id=since, lang = lan)
         return search_results
 
     def opinion_mining(self, search_results):

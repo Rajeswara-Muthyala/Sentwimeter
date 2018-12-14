@@ -1,19 +1,19 @@
 #!/usr/bin/python
 import sys
 from twitterclient import TwitterClient
+import argparse
 ####main####
 
-if len(sys.argv) != 4:
-    print "Use Sentwimeter <tweet-keyword> <tweet-count> <since_date(YYYY-MM-DD)>"
-    exit(0)
-
-keyword = sys.argv[1]
-count = sys.argv[2]
-date = sys.argv[3]
+parser = argparse.ArgumentParser()
+parser.add_argument("keyword", help = "keyword to search for")
+parser.add_argument("count", help = "Number of tweets to consider(limit of 100)")
+parser.add_argument("since_date", help = "The date from which tweets should be analyzed")
+parser.add_argument("-st", "--search_type", help = "recent(default)/popular/mixed", default="recent")
+parser.add_argument("-lang", "--language", help = "language tweets", default="en")
+args = parser.parse_args()
 
 tClient = TwitterClient()
-search_results = tClient.search_until(k=keyword, tc=count, st="latest", ud=date)
-
+search_results = tClient.search_until(k=args.keyword, tc=args.count, st=args.search_type, ud=args.since_date, lan = args.language)
 
 '''
 te_search_results = twitter.search(q=keyword, count=tweet_count, result_type='mixed', since_id=since, lang="te")
@@ -23,8 +23,8 @@ for result in te_search_results['statuses']:
     print result['text']
     trans.translate(result['text'])
 '''
+
 opin_dict = tClient.opinion_mining(search_results)
-print type(opin_dict)
 
 print "Print 1)Positive 2)Negative 3)Netral 4)Exit \n "
 option = input("Enter option(1/2/3/4)")
