@@ -26,22 +26,23 @@ for result in te_search_results['statuses']:
 
 opin_dict = tClient.opinion_mining(search_results)
 
-print "Print 1)Positive 2)Negative 3)Netral 4)Exit \n "
-option = input("Enter option(1/2/3/4)")
+while True:
+    print "Print 1)Positive 2)Negative 3)Netral 4)Exit \n "
+    option = input("Enter option(1/2/3/4)")
 
-opted_tuple = ()
-if option == 1:
-    opted_tuple = opin_dict['positive']
-elif option == 2:
-    opted_tuple = opin_dict['negative']
-elif option == 3:
-    opted_tuple = opin_dict['neutral']
-elif option == 4:
-    print "Exiting.."
-    exit(0)
-else:
-    print "Undefined option, existing..."
-    exit(0)
+    opted_tuple = ()
+    if option == 1:
+        opted_tuple = opin_dict['positive']
+    elif option == 2:
+        opted_tuple = opin_dict['negative']
+    elif option == 3:
+        opted_tuple = opin_dict['neutral']
+    elif option == 4:
+        print "Exiting.."
+        exit(0)
+    else:
+        print "Undefined option, existing..."
+        exit(0)
 
-for tweet in opted_tuple:
-    print " ***Start*** \n", tweet, "\n***End***"
+    for tweet in opted_tuple:
+        print " ***" + tweet['created_at'] + "*** \n", tweet['full_text'], "\n***End***"
