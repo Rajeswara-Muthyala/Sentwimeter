@@ -56,9 +56,9 @@ class TwitterClient():
 
     def opinion_mining(self, search_results):
         #Dictionary 
-        opinion_dict = {"positive":(), \
-                        "negative":(), \
-                        "neutral":()}
+        opinion_dict = {"positive":{}, \
+                        "negative":{}, \
+                        "neutral":{}}
                         
         num_tweets = len(search_results['statuses'])
         positive = 0
@@ -68,13 +68,13 @@ class TwitterClient():
             #print("Created at ", tweet['created_at'], tweet['text'])
             sentimeter = self.get_tweet_sentiment(tweet['full_text'])
             if sentimeter == "positive":
-                opinion_dict["positive"] += tuple([tweet])
+                opinion_dict["positive"][tweet['id']] = tweet
                 positive+=1
             elif sentimeter == "negative":
-                opinion_dict["negative"] += tuple([tweet])
+                opinion_dict["negative"][tweet['id']] = tweet
                 negative+=1    
             else:
-                opinion_dict["neutral"] += tuple([tweet])
+                opinion_dict["neutral"][tweet['id']] = tweet
                 neutral+=1
 
         positive_percetage = (float(positive) / num_tweets) * 100

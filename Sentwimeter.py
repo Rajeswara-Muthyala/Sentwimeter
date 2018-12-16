@@ -30,13 +30,13 @@ while True:
     print "Print 1)Positive 2)Negative 3)Netral 4)Exit \n "
     option = input("Enter option(1/2/3/4)")
 
-    opted_tuple = ()
+    opted_dict = {}
     if option == 1:
-        opted_tuple = opin_dict['positive']
+        opted_dict = opin_dict['positive']
     elif option == 2:
-        opted_tuple = opin_dict['negative']
+        opted_dict = opin_dict['negative']
     elif option == 3:
-        opted_tuple = opin_dict['neutral']
+        opted_dict = opin_dict['neutral']
     elif option == 4:
         print "Exiting.."
         exit(0)
@@ -44,5 +44,5 @@ while True:
         print "Undefined option, existing..."
         exit(0)
 
-    for tweet in opted_tuple:
-        print " ***" + tweet['created_at'] + "*** \n", tweet['full_text'], "\n***End***"
+    for key in opted_dict:
+        print " ***" + opted_dict[key]['id_str'] + "***" + opted_dict[key]['created_at'] + "*** \n", opted_dict[key]['full_text'], "\n***End***"
