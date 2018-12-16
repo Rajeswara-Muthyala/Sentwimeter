@@ -1,0 +1,20 @@
+A movie review can be assessed by -
+
+*By Querying with the name of the movie
+*By quering with the name of the hero and movie
+*By quering with the name of the hero , movie and director
+*Save by Tweet id to eliminate duplicates
+*As many tweets as possible - hourly or bihourly pulling of tweets will do
+*All tweets converted to english
+*While printing print the original language of the tweet
+*Sentiment analysis using library and keyword manual analysis
+    *Both Positive - Positive
+    *Both Negative - Negative
+    *One positive and one neutral - Positive
+    *one negative and one neutral - Negative
+    *both neutral - Neutral 
+    *one positive and one negative - Neutral
+
+*How to analyze links, memes, and keywords?
+*Add feedback from famous reviewers?
+*Give weight to reviewers
