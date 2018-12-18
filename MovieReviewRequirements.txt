@@ -3,8 +3,9 @@ A movie review can be assessed by -
 *By Querying with the name of the movie
 #*By quering with the name of the hero and movie
 #*By quering with the name of the hero , movie and director
-*Save by Tweet id to eliminate duplicates
-*As many tweets as possible - hourly or bihourly pulling of tweets will do
+*Save by Tweet id to eliminate duplicates - done
+*As many tweets as possible - hourly or bihourly pulling of tweets will do - done, limited to 1000 tweets for now
+*Try naivesBayes classifier with TextBlob
 *All tweets converted to english
 *While printing print the original language of the tweet
 *Sentiment analysis using library and keyword manual analysis
